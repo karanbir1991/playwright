@@ -13,7 +13,7 @@ export default defineConfig({
     ['list'],
     ['github'],
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
-    ['json', { outputFile: 'test-results/results.json' }],
+    
   ],
 
   use: {
