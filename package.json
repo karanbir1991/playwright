@@ -1,0 +1,31 @@
+{
+  "name": "playwright-e2e-framework",
+  "version": "1.0.0",
+  "description": "Playwright E2E Testing Framework - API + Web + DB Integration",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:api": "playwright test tests/api --reporter=html",
+    "test:web": "playwright test tests/web --reporter=html --headed",
+    "test:db": "playwright test tests/db --reporter=html",
+    "test:integration": "playwright test tests/integration --reporter=html",
+    "test:all": "playwright test --reporter=html",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.3.5",
+    "allure-playwright": "^3.5.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.3.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "mysql2": "^3.19.0",
+    "zod": "^4.3.6"
+  }
+}
