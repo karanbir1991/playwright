@@ -115,7 +115,5 @@ test.describe('validation cases for API-UI-DB', () => {
   }
   });
 
-  // verify via API
-  const response = await request.get('')
 
 });
