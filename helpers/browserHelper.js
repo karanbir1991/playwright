@@ -1,10 +1,17 @@
 // helpers/browserHelper.js
 
-export async function withHeadedPage(browser, fn) {
-  // Launch a brand new headed browser instance
+export async function withHeadedPage(browser, fn, options = {}) {
+  const {
+    slowMo = 600,
+  } = options;
+
+  // ← Detect CI environment — if running in CI, force headless
+  const isCI      = process.env.CI === 'true';
+  const headless  = isCI ? true : false;
+
   const headedBrowser = await browser.browserType().launch({
-    headless: false,    // ← always headed
-    slowMo: 600,        // ← slow enough to watch
+    headless,
+    slowMo: isCI ? 0 : slowMo,   // no slowMo in CI — just run fast
   });
 
   const context = await headedBrowser.newContext();
@@ -14,6 +21,6 @@ export async function withHeadedPage(browser, fn) {
     await fn(page);
   } finally {
     await context.close();
-    await headedBrowser.close();   // ← close the headed browser too
+    await headedBrowser.close();
   }
 }
